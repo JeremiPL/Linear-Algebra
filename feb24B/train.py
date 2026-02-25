@@ -4,7 +4,7 @@ import torch.optim as optim
 import pandas as pd 
 import numpy as np
 
-torch.manual_seed(9)
+torch.manual_seed(42)
 
 data = pd.read_csv('data.csv')
 
@@ -22,14 +22,14 @@ Y = target
 model = nn.Linear(1,1)
 criterion = nn.BCEWithLogitsLoss()
 optimizer = optim.SGD(model.parameters(), lr = 0.1)
-epochs = 10000
+epochs = 250
 
 for epoch in range(epochs):
     Yhat = model(X)
     loss = criterion(Yhat,Y)
     loss.backward()
-    optimizer.zero_grad()
     optimizer.step()
+    optimizer.zero_grad()
     
 
 torch.save({

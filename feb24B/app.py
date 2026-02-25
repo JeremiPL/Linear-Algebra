@@ -23,7 +23,7 @@ def f(size):
     X = (features - fm)/fs
     classification = model(X)
 
-    if classification > 0.5:
+    if classification > .5:
         return 'Malignant'
     else:
         return 'Benign'
